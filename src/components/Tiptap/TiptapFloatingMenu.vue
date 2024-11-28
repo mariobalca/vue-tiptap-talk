@@ -1,168 +1,47 @@
 <template>
   <div class="basis-full text-sm">
-    <div
-      v-if="locked"
-      class="absolute z-10 inset-0 bg-gray-10 opacity-80 -m-2 rounded-lg text-gray-100 text-sm font-semibold flex items-center justify-center p-2"
-    >
-      Someone else is editing this
-    </div>
     <bubble-menu v-if="editor" :editor="editor" />
-    <floating-menu v-if="editor" :editor="editor" />
     <editor-content :editor="editor" class="h-full" />
+    <floating-menu v-if="editor" :editor="editor" />
   </div>
 </template>
 
 <script setup>
-import { computed, onBeforeUnmount, watch } from 'vue'
+import { computed, onBeforeUnmount } from 'vue'
 import { EditorContent, useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
-
-import Emoji, { emojis } from '@tiptap-pro/extension-emoji'
-import Details from '@tiptap-pro/extension-details'
-import DetailsSummary from '@tiptap-pro/extension-details-summary'
-import DetailsContent from '@tiptap-pro/extension-details-content'
-import { Highlight } from '@tiptap/extension-highlight'
-import Image from './Image/ImageExtension'
-import { Link } from '@tiptap/extension-link'
-import Mention from './Mention/MentionExtension'
-import { Placeholder } from '@tiptap/extension-placeholder'
 import { Slash } from '@/components/Tiptap/Slash/extension'
-import { Table } from '@tiptap/extension-table'
-import { TableHeader } from '@tiptap/extension-table-header'
-import { TableCell } from '@tiptap/extension-table-cell'
-import { TableRow } from '@tiptap/extension-table-row'
-import { TextAlign } from '@tiptap/extension-text-align'
-import { Typography } from '@tiptap/extension-typography'
-import { Underline } from '@tiptap/extension-underline'
-import Youtube from './Youtube/YoutubeExtension'
-
-import emojiSuggestion from '@/components/Tiptap/Emoji/suggestion'
-import mentionSuggestion from '@/components/Tiptap/Mention/suggestion'
+import { Placeholder } from '@tiptap/extension-placeholder'
 import slashSuggestion from '@/components/Tiptap/Slash/suggestion'
 
 import BubbleMenu from './BubbleMenu/BubbleMenu.vue'
-import FloatingMenu from './Slash/FloatingMenu.vue'
-
-const props = defineProps({
-  id: {
-    type: String,
-    default: null
-  },
-  placeholder: {
-    type: String,
-    default: 'Write something'
-  },
-  readonly: {
-    type: Boolean,
-    default: false
-  },
-  locked: {
-    type: Boolean,
-    default: false
-  },
-  entityId: {
-    type: String,
-    default: null
-  },
-  entityType: {
-    type: String,
-    default: null
-  }
-})
+import FloatingMenu from '@/components/Tiptap/Slash/FloatingMenu.vue'
 
 const model = defineModel({ type: String, default: null })
 
-const isEditable = computed(() => !props.readonly && !props.locked)
-
 const extensions = computed(() => [
-  StarterKit.configure({
-    horizontalRule: {
-      HTMLAttributes: {
-        class: 'horizontalRule'
-      }
-    }
-  }),
-  Emoji.configure({
-    emojis,
-    enableEmoticons: true,
-    suggestion: emojiSuggestion
-  }),
-  Details.configure({
-    persist: true,
-    HTMLAttributes: {
-      class: 'collapsible'
-    }
-  }),
-  DetailsContent,
-  DetailsSummary,
-  Highlight,
-  Image.configure({
-    entityId: props.entityId,
-    entityType: props.entityType
-  }),
-  Link.configure({
-    openOnClick: 'whenNotEditable'
-  }),
-  Mention.configure({
-    HTMLAttributes: {
-      class: 'mention'
-    },
-    suggestion: mentionSuggestion
-  }),
   Placeholder.configure({
-    includeChildren: true,
-    showOnlyWhenEditable: true,
     placeholder: ({ node }) => {
       if (node.type.name === 'heading') {
         return 'Header'
-      } else if (node.type.name === 'detailsSummary') {
-        return 'Title'
       } else if (['codeBlock'].includes(node.type.name)) {
         return 'Write something'
-      } else if (['tableCell', 'tableHeader'].includes(node.type.name)) {
-        return ''
       }
       return "Write something or press '/' for command"
     }
   }),
+  StarterKit,
   Slash.configure({
     suggestion: slashSuggestion
-  }),
-  Table.configure({
-    resizable: true,
-    allowTableNodeSelection: true
-  }),
-  TableCell.extend({
-    content: 'inline*'
-  }),
-  TableHeader.extend({
-    content: 'inline*'
-  }),
-  TableRow.extend({
-    allowGapCursor: false
-  }),
-  TextAlign.configure({
-    alignments: ['left', 'center', 'right', 'justify'],
-    types: ['table-cell', 'heading', 'paragraph', 'image', 'youtube']
-  }),
-  Typography,
-  Underline,
-  Youtube.configure({
-    controls: false
   })
 ])
 
 const editor = useEditor({
   content: model.value,
-  editable: isEditable.value,
   extensions: extensions.value,
   onUpdate: ({ editor }) => {
     model.value = editor.getHTML()
   }
-})
-
-watch(isEditable, (value) => {
-  editor.value.setEditable(value)
 })
 
 onBeforeUnmount(() => {

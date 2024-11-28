@@ -5,9 +5,12 @@
     </section>
     <section class="center">
       <h3>StarterKit</h3>
-      <tiptap-starter-kit class="border border-gray-60 p-4 rounded" />
+      <tiptap-starter-kit class="border border-gray-60 p-6 rounded" />
       <p>
-        <a class="text-xl" href="https://tiptap.dev/docs/editor/extensions/functionality/starterkit"
+        <a
+          class="text-xl"
+          target="_blank"
+          href="https://tiptap.dev/docs/editor/extensions/functionality/starterkit"
           >https://tiptap.dev/docs/editor/extensions/functionality/starterkit</a
         >
       </p>
@@ -15,9 +18,10 @@
     <section class="center">
       <h3>StarterKit</h3>
       <div class="text-xl">
+        <p>TiptapStarterKit.vue</p>
         <pre class="javascript">
           <code data-trim data-noescape>
-            {{ codeToHighlight }}
+            {{ tiptapCode }}
           </code>
         </pre>
       </div>
@@ -25,7 +29,10 @@
     <section class="center text-xl">
       <h3>StarterKit</h3>
       <p>
-        <a class="text-xl" href="https://tiptap.dev/docs/editor/extensions/functionality/starterkit"
+        <a
+          class="text-xl"
+          target="_blank"
+          href="https://tiptap.dev/docs/editor/extensions/functionality/starterkit"
           >https://tiptap.dev/docs/editor/extensions/functionality/starterkit</a
         >
       </p>
@@ -71,7 +78,7 @@
 <script setup lang="ts">
 import TiptapStarterKit from '@/components/Tiptap/TiptapStarterKit.vue'
 
-const codeToHighlight = `
+const tiptapCode = `
 <template>
   <div class="basis-full text-sm">
     <editor-content :editor="editor" class="h-full" />
