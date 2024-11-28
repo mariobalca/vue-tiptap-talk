@@ -1,35 +1,17 @@
-# vue-tiptap-talk
+# How to build a Notion-like editor with Tiptap and Vue.js
 
-This template should help get you started developing with Vue 3 in Vite.
+Interactive slide presentation, built with [Vue.js](https://vuejs.org) and [Reveal.js](https://revealjs.com) for [Coimbra.js Meetup](https://lu.ma/k7hu86ln).
 
-## Recommended IDE Setup
+## Run locally
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+### First install dependencies
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Then run (with hot-reload for development)
 
 ```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```

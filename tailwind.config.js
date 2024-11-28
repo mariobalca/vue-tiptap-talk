@@ -913,7 +913,9 @@ export default {
       64: '16rem',
       72: '18rem',
       80: '20rem',
-      96: '24rem'
+      96: '24rem',
+      112: '28rem',
+      128: '32rem',
     },
     stroke: ({ theme }) => ({
       none: 'none',
