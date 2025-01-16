@@ -17,8 +17,8 @@
       <h3>What's next?</h3>
       <ul>
         <li>
-          A fully-featured Tiptap Vue.js editor, released as an Open-Source package on Vue.js
-          Portugal's GitHub Repository 🚀
+          A fully-featured Tiptap Vue.js editor, released as an Open-Source package on the future
+          Portugal.Vue's GitHub Repository 🚀
         </li>
       </ul>
     </section>
