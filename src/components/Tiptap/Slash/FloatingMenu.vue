@@ -2,7 +2,7 @@
   <floating-menu :editor="editor" :tippy-options="{ duration: 100, placement: 'left' }">
     <button
       class="w-4 h-4 rounded-md hover:bg-gray-10 flex items-center justify-center"
-      style="transform: translate(-2px, -84px)"
+      style="transform: translate(-64px, -133px)"
       @click="editor.chain().focus().insertContent('/').run()"
     >
       <icon name="plus-xs" />

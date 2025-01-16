@@ -10,8 +10,10 @@
       <TailwindSlide />
       <PrimeVueSlide />
       <TiptapSlide />
+      <TiptapConceptsSlide />
+      <TiptapQuickExample />
       <section class="center">
-        <h3>Let's get started!</h3>
+        <h3>Now that we've covered the basics, let's get started!</h3>
       </section>
       <StarterKitSlide />
       <BubbleMenuSlide />
@@ -19,6 +21,7 @@
       <PlaceholderSlide />
       <FloatingMenuSlide />
       <MoreSlide />
+      <WhatsNext />
       <ThanksSlide />
     </div>
   </div>
@@ -48,6 +51,9 @@ import FloatingMenuSlide from '@/slides/FloatingMenuSlide.vue'
 import SlashCommandsSlide from '@/slides/SlashCommandsSlide.vue'
 import PlaceholderSlide from '@/slides/PlaceholderSlide.vue'
 import MoreSlide from '@/slides/MoreSlide.vue'
+import TiptapConceptsSlide from '@/slides/TiptapConceptsSlide.vue'
+import WhatsNext from '@/slides/WhatsNext.vue'
+import TiptapQuickExample from '@/slides/TiptapQuickExample.vue'
 
 onMounted(() => {
   Reveal.initialize({

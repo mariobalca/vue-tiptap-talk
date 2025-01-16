@@ -15,17 +15,6 @@
         >
       </p>
     </section>
-    <section class="center">
-      <h3>StarterKit</h3>
-      <div class="text-xl">
-        <p>TiptapStarterKit.vue</p>
-        <pre class="javascript">
-          <code data-trim data-noescape>
-            {{ tiptapCode }}
-          </code>
-        </pre>
-      </div>
-    </section>
     <section class="center text-xl">
       <h3>StarterKit</h3>
       <p>
@@ -71,6 +60,17 @@
             <li>History</li>
           </ul>
         </div>
+      </div>
+    </section>
+    <section class="center">
+      <h3>StarterKit</h3>
+      <div class="text-xl">
+        <p>TiptapStarterKit.vue</p>
+        <pre class="javascript">
+          <code data-trim data-noescape>
+            {{ tiptapCode }}
+          </code>
+        </pre>
       </div>
     </section>
   </section>
